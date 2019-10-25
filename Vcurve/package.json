@@ -1,0 +1,22 @@
+{
+  "name": "vcurve",
+  "version": "1.0.1",
+  "description": "数字运动曲线 大概是这个吧",
+  "main": "dist/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlanSean/Vcurve.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlanSean/Vcurve/issues"
+  },
+  "homepage": "https://github.com/AlanSean/Vcurve#readme"
+}

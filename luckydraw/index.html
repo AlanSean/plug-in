@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>luckydraw</title>
+    <script src="./Vcurve.js"></script>
+    <style >
+        #canvas{
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="200" height="200" onClick="canvasclick(event)"></canvas>
+
+    <div>
+        <input type="text" name="" value="" class="countNum" placeholder="几个奖品 默认6个">
+        <button>生成</button>
+        <input type="text" name="" value="" class="specifyNum" placeholder="指定第几个中 默认随机">
+    </div>
+
+</body>
+<script src="./Luckydraw.js"></script>
+<script type="text/javascript">
+    $ = id  =>  document.querySelector(id),
+    context = $('canvas').getContext('2d');
+    var luckydraw,specifyNum,countNum = $('.countNum');
+
+    $('button').onclick = function(){
+        luckydraw = new Luckydraw({
+            context: context, //canvas的上下文
+            num: Number(countNum.value) || 6,//几种奖品
+            duration: 3,//运行3秒
+            complete: (n) => console.log('抽奖完毕:'+n)
+        });
+    }
+
+    function canvasclick(e){
+        var x = e.offsetX,
+            y =  e.offsetY;
+        if(x>=70 && x<=130 && y>=70 && y<=130){
+            specifyNum = Number($('.specifyNum').value) || undefined;
+            luckydraw.luckDraw(specifyNum);
+        }
+    }
+</script>
+</html>
