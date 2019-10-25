@@ -2,6 +2,8 @@
 
 
 [简单体验地址](https://alansean.github.io/plug-in/Vcurve/test/index.html)
+
+
 渐减速运动 输出当前运行到的数值
 
 自己更多用于一些动画,滚动条回滚
