@@ -1,5 +1,2 @@
-browserslist
-.babelrc
-gulpfile.js
 node_modules
 package-lock.json
