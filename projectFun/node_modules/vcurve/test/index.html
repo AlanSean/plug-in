@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../curve.js" charset="utf-8"></script>
+    <script src="canvas.js" charset="utf-8"></script>
+    <style media="screen">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        body{
+            width: 100%;
+            height: 100%;
+        }
+        #myCanvas{
+            width: 100%;
+            height: 500px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+        <button type="button" >暂停</button>
+    <div id="num">
+
+    </div>
+    <div id="myCanvas">
+    </div>
+</body>
+    <script src="canvas.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        var KLineMap = new KLineMap();
+        KLineMap.drawLine();
+        var num = document.querySelector('#num')
+        var curve = new Curve({
+            duration: 1,//单位秒
+            starNum: KLineMap.k.xStart,
+            reductionGear: false,//变减速运动
+            endNum: KLineMap.k.xEnd
+        });
+        document.querySelector('button').onclick = function(){
+            this.innerHTML =  curve.pause().paused ? '继续' : '暂停';
+        }
+        var y = KLineMap.k.yEnd;x = KLineMap.k.xStart;
+        curve.start( (X,Y) => {
+            Y = KLineMap.k.yEnd - (Y*((KLineMap.k.yEnd - KLineMap.k.yStart)/(curve.duration/1000)))
+            KLineMap.ctx.beginPath();
+            KLineMap.ctx.moveTo(x,y);
+            KLineMap.ctx.lineTo(X,Y);
+            KLineMap.ctx.stroke();
+            y = Y;
+            x = X;
+        })
+
+    </script>
+</html>
